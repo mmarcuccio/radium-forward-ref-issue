@@ -1,25 +1,23 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import Radium from "radium";
+import "./App.css";
+
+const TestRadium = Radium(props => <div>Radium works</div>);
+
+const TestForwardRefs = React.forwardRef((props, ref) => (
+  <div ref={ref}>Forward refs work</div>
+));
+
+const TestBoth = Radium(TestForwardRefs);
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <TestRadium />
+        <TestForwardRefs />
+        <TestBoth />
       </div>
     );
   }
